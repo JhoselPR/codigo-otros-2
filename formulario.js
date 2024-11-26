@@ -2,14 +2,14 @@ var formulario = document.querySelector("#form")
 
 formulario.onsubmit = function(e) {
 
-  e.prevent();
+  e.preventDefault(); //Previene la acción por defecto que tienen los formularios al dar submit
   
   var n = formulario.elements[0]
-  var e = formulario.elements[1]
+  var age = formulario.elements[1] //e es como se está nombrando al evento, por eso se reemplaza con age para evitar confusiones
   var na = formulario.elements[2]
 
   var nombre = n.value
-  var edad = e.value
+  var edad = age.value
 
   var i = na.selectedIndex
   var nacionalidad = na.options[i].value
@@ -20,7 +20,7 @@ formulario.onsubmit = function(e) {
     n.classList.add("error")
   }
   if (edad < 18 || edad > 120) {
-    e.classList.add("error")
+    age.classList.add("error")
   }
 
 if (nombre.length > 0 
@@ -30,12 +30,13 @@ if (nombre.length > 0
   }
 }
 
-var botonBorrar = document.createElement("button")
-botonBorrar.textContent = "Eliminar invitado"
-botonBorrar.id = "boton-borrar"
-var corteLinea = document.createElement("br")
-document.body.appendChild(corteLinea)
-document.body.appendChild(botonBorrar);
+// var botonBorrar = document.createElement("button")
+// botonBorrar.textContent = "Eliminar invitado"
+// botonBorrar.id = "boton-borrar"
+// var corteLinea = document.createElement("br")
+// document.body.appendChild(corteLinea)
+// document.body.appendChild(botonBorrar);
+//Código innecesario porque cada vez que añades un invitado, aparece de nuevo el botón para eliminarlo
 
 function agregarInvitado(nombre, edad, nacionalidad) {
 
@@ -55,7 +56,7 @@ function agregarInvitado(nombre, edad, nacionalidad) {
 var lista = document.getElementById("lista-de-invitados")
 
 var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
+elementoLista.classList.add("elemento-lista") //La función correcto es .add, no .added
 lista.appendChild(elementoLista)
 
 var spanNombre = document.createElement("span")
